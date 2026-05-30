@@ -1,0 +1,39 @@
+package characters;
+
+class PicoChristmas extends CharacterInfoBase
+{
+
+	public function new(){
+		super();
+
+		info.name = "pico-christmas";
+		info.spritePath = "week5/pico_christmas";
+		info.frameLoadType = setAtlas();
+		
+		info.iconName = "pico";
+		info.facesLeft = true;
+		info.deathCharacter = "PicoChristmasDead";
+		info.resultsCharacter = "Pico";
+		info.focusOffset.set(63, -113);
+
+		addByLabel("idle", offset(), "Idle", 24, loop(false, 0), false, false);
+
+		addByLabel("singUP", offset(), "Sing Up", 24, loop(false, 0), false, false);
+		addByLabel("singDOWN", offset(), "Sing Down", 24, loop(false, 0), false, false);
+		addByLabel("singLEFT", offset(), "Sing Left", 24, loop(false, 0), false, false);
+		addByLabel("singRIGHT", offset(), "Sing Right", 24, loop(false, 0), false, false);
+
+		addByLabel("singRIGHTmiss", offset(), "Miss Right", 24, loop(true, -4), false, false);
+		addByLabel("singLEFTmiss", offset(), "Miss Left", 24, loop(true, -4), false, false);
+		addByLabel("singUPmiss", offset(), "Miss Up", 24, loop(true, -4), false, false);
+		addByLabel("singDOWNmiss", offset(), "Miss Down", 24, loop(true, -4), false, false);
+
+		addByLabel("singUP-censor", offset(), "Censor Up", 24, loop(true, -4), false, false);
+		addByLabel("singDOWN-censor", offset(), "Censor Down", 24, loop(true, -4), false, false);
+		addByLabel("singLEFT-censor", offset(), "Censor Left", 24, loop(true, -4), false, false);
+		addByLabel("singRIGHT-censor", offset(), "Censor Right", 24, loop(true, -4), false, false);
+
+		addExtraData("reposition", [-33, 40]);
+	}
+
+}

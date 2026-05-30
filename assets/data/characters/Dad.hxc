@@ -1,0 +1,26 @@
+package characters;
+
+class Dad extends CharacterInfoBase
+{
+
+	public function new(){
+		super();
+
+		info.name = "dad";
+		info.spritePath = "week1/dad";
+		info.frameLoadType = setAtlas();
+		
+		info.iconName = "dad";
+		info.focusOffset.set(144, -81);
+
+		addByLabel("idle", offset(), "Idle", 24, loop(true, -4));
+		addByLabel("singUP", offset(), "Sing Up", 24, loop(true, -4));
+		addByLabel("singRIGHT", offset(), "Sing Right", 24, loop(true, -4));
+		addByLabel("singDOWN", offset(), "Sing Down", 24, loop(true, -4));
+		addByLabel("singLEFT", offset(), "Sing Left", 24, loop(true, -4));
+
+		addExtraData("stepsUntilRelease", 6.1);
+		addExtraData("reposition", [26, 1]);
+	}
+
+}

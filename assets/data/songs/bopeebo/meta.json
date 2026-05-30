@@ -1,0 +1,9 @@
+{
+  "name": "Bopeebo",
+  "artist": "Kawai Sprite",
+  "album": "vol1",
+  "difficulties": [1, 1, 1],
+  "compatibleInsts": ["#bopeebo"],
+  "compatableInsts": ["Included for backwards compatibility purposes and to prevent crashes."],
+  "mixName": "Original"
+}

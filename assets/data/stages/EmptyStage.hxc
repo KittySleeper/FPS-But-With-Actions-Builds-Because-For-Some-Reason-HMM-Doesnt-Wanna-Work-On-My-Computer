@@ -1,0 +1,15 @@
+package stages;
+
+import flixel.FlxSprite;
+import flixel.math.FlxPoint;
+import flixel.FlxObject;
+
+class EmptyStage extends BaseStage
+{
+
+	public function new(){
+		super();
+
+		name = "empty";
+	}
+}

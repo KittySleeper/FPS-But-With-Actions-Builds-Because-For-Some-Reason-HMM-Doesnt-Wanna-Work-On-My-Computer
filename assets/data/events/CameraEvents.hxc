@@ -1,0 +1,202 @@
+package events;
+
+import flixel.math.FlxMath;
+import flixel.math.FlxPoint;
+
+class CameraEvents extends Events
+{
+
+	override function defineEvents() {
+		registerEvent({prefix: "camMove", eventFunction: camMove, executeAtStart: true, editor: {description: CAM_MOVE_DESC, arguments: [
+			{name: "X Position", type: "float", value: "0"}, {name: "Y Position", type: "float", value: "0"}, {name: "Time", type: "time", value: "1.9"}, {name: "Ease", type: "ease", value: "expoOut"}, {name: "Relative To Current Position", type: "bool", value: "false"}
+		]}});
+		registerEvent({prefix: "camZoom", eventFunction: camZoom, editor: {description: CAM_ZOOM_DESC, arguments: [
+			{name: "Zoom", type: "float", value: "1"}, {name: "Time", type: "time", value: "4b"}, {name: "Ease", type: "ease", value: "quadInOut"}, {name: "Relative To Default Zoom", type: "bool", value: "false"}
+		]}});
+		
+		registerEvent({prefix: "flash", eventFunction: flash, editor: {description: FLASH_DESC, arguments: [
+			{name: "Time", type: "time", value: "1b"}, {name: "Color", type: "color", value: "0xFFFFFF"}
+		]}});
+		registerEvent({prefix: "flashHud", eventFunction: flashHud, editor: {description: FLASH_HUD_DESC, arguments: [
+			{name: "Time", type: "time", value: "1b"}, {name: "Color", type: "color", value: "0xFFFFFF"}
+		]}});
+		registerEvent({prefix: "fadeOut", eventFunction: fadeOut, editor: {description: FADE_OUT_DESC, arguments: [
+			{name: "Time", type: "time", value: "1b"}, {name: "Color", type: "color", value: "0x000000"}
+		]}});
+		registerEvent({prefix: "fadeOutHud", eventFunction: fadeOutHud, editor: {description: FADE_OUT_HUD_DESC, arguments: [
+			{name: "Time", type: "time", value: "1b"}, {name: "Color", type: "color", value: "0x000000"}
+		]}});
+		
+		registerEvent({prefix: "camShake", eventFunction: camShake, editor: {description: CAM_SHAKE_DESC, arguments: [
+			{name: "Intensity", type: "float", value: "0.008"}, {name: "Frequency", type: "float", value: "0.042"}, {name: "Shake Time", type: "time", value: "1"}, {name: "Return Time", type: "time", value: "0.042"}, {name: "Ease", type: "ease", value: "linear"}
+		]}});
+		registerEvent({prefix: "startCamShake", eventFunction: startCamShake, editor: {description: CAM_SHAKE_START_DESC, arguments: [
+			{name: "Intensity", type: "float", value: "0.008"}, {name: "Frequency", type: "float", value: "0.042"}, {name: "Ease", type: "ease", value: "linear"}
+		]}});
+		registerEvent({prefix: "endCamShake", eventFunction: endCamShake, editor: {description: CAM_SHAKE_END_DESC, arguments: [
+			{name: "Return Time", type: "time", value: "0.042"}, {name: "Ease", type: "ease", value: "linear"}
+		]}});
+		
+		registerEvent({prefix: "camFocusBf", eventFunction: camFocusBf, executeAtStart: true, editor: {description: CAM_FOCUS_BF_DESC, arguments: [
+			{name: "X Offset", type: "float", value: "0"}, {name: "Y Offset", type: "float", value: "0"}, {name: "Time", type: "time", value: "1.9"}, {name: "Ease", type: "ease", value: "expoOut"}
+		]}});
+		registerEvent({prefix: "camFocusDad", eventFunction: camFocusDad, executeAtStart: true, editor: {description: CAM_FOCUS_DAD_DESC, arguments: [
+			{name: "X Offset", type: "float", value: "0"}, {name: "Y Offset", type: "float", value: "0"}, {name: "Time", type: "time", value: "1.9"}, {name: "Ease", type: "ease", value: "expoOut"}
+		]}});
+		registerEvent({prefix: "camFocusGf", eventFunction: camFocusGf, executeAtStart: true, editor: {description: CAM_FOCUS_GF_DESC, arguments: [
+			{name: "X Offset", type: "float", value: "0"}, {name: "Y Offset", type: "float", value: "0"}, {name: "Time", type: "time", value: "1.9"}, {name: "Ease", type: "ease", value: "expoOut"}
+		]}});
+		registerEvent({prefix: "camFocusCenter", eventFunction: camFocusCenter, executeAtStart: true, editor: {description: CAM_FOCUS_CENTER_DESC, arguments: [
+			{name: "X Offset", type: "float", value: "0"}, {name: "Y Offset", type: "float", value: "0"}, {name: "Time", type: "time", value: "1.9"}, {name: "Ease", type: "ease", value: "expoOut"}
+		]}});
+		
+		registerEvent({prefix: "toggleCamBop", eventFunction: toggleCamBop, editor: {description: TOGGLE_CAM_BOP_DESC}});
+		
+		registerEvent({prefix: "camBop", eventFunction: camBop, editor: {description: CAM_BOP_DESC}});
+		registerEvent({prefix: "camBopBig", eventFunction: camBopBig, editor: {description: CAM_BOP_BIG_DESC}});
+		registerEvent({prefix: "camBopFreq", eventFunction: camBopFreq, editor: {description: CAM_BOP_FREQ_DESC, arguments: [
+			{name: "Bop Every", type: "int", value: "4"}
+		]}});
+		registerEvent({prefix: "camBopIntensity", eventFunction: camBopIntensity, editor: {description: CAM_BOP_INTENSITY_DESC, arguments: [
+			{name: "Multiplier", type: "float", value: "1"}
+		]}});
+		
+		registerEvent({prefix: "setDynamicCamAmount", eventFunction: setDynamicCamAmount, editor: {description: SET_DYNAMIC_CAM_AMOUNT_DESC, arguments: [
+			{name: "Distance", type: "float", value: "20"}
+		]}});
+	}
+
+	function camMove(tag:String):Void{
+		var args = Events.getArgs(tag, Events.getDefaultArguments("camMove"));
+		if(!Events.parseBool(args[4])){
+			playstate.camMove(Events.parseFloat(args[0]), Events.parseFloat(args[1]), Events.parseTime(args[2]), Events.parseEase(args[3]), null);
+		}
+		else{
+			playstate.camMove(playstate.camFollow.x + Events.parseFloat(args[0]), playstate.camFollow.y + Events.parseFloat(args[1]), Events.parseTime(args[2]), Events.parseEase(args[3]), null);
+		}
+	}
+
+	function camZoom(tag:String):Void{
+		var args = Events.getArgs(tag);
+		var zoomLevel = Events.parseFloat(args[0]);
+		if(Events.parseBool(args[3])){ zoomLevel *= playstate.stage.startingZoom; }
+		playstate.camChangeZoom(zoomLevel, Events.parseTime(args[1]), Events.parseEase(args[2]), null);
+	}
+
+	function camBopFreq(tag:String):Void{
+		var args = Events.getArgs(tag);
+		playstate.camBopFrequency = Events.parseInt(args[0]);
+	}
+	
+	function camBopIntensity(tag:String):Void{
+		var args = Events.getArgs(tag);
+		playstate.camBopIntensity = Events.parseFloat(args[0]);
+	}
+
+	function toggleCamBop(tag:String):Void{
+		playstate.autoCamBop = !playstate.autoCamBop;
+	}
+	
+	function camBop(tag:String):Void{
+		playstate.uiBop(0.0175 * playstate.camBopIntensity, 0.03 * playstate.camBopIntensity, 0.8);
+	}
+
+	function camBopBig(tag:String):Void{
+		playstate.uiBop(0.035 * playstate.camBopIntensity, 0.06 * playstate.camBopIntensity, 0.8);
+	}
+
+	function flash(tag:String):Void{
+		var args = Events.getArgs(tag);
+		playstate.camGame.stopFX();
+		playstate.camGame.fade(ScriptingUtil.colorFromString(args[1]), Events.parseTime(args[0]), true);
+	}
+
+	function flashHud(tag:String):Void{
+		var args = Events.getArgs(tag);
+		playstate.camHUD.stopFX();
+		playstate.camHUD.fade(ScriptingUtil.colorFromString(args[1]), Events.parseTime(args[0]), true);
+	}
+
+	function fadeOut(tag:String):Void{
+		var args = Events.getArgs(tag);
+		playstate.camGame.stopFX();
+		playstate.camGame.fade(ScriptingUtil.colorFromString(args[1]), Events.parseTime(args[0]));
+	}
+
+	function fadeOutHud(tag:String):Void{
+		var args = Events.getArgs(tag);
+		playstate.camHUD.stopFX();
+		playstate.camHUD.fade(ScriptingUtil.colorFromString(args[1]), Events.parseTime(args[0]));
+	}
+
+	function startCamShake(tag:String):Void{
+		var args = Events.getArgs(tag);
+		playstate.startCamShake(Events.parseFloat(args[0]), Events.parseTime(args[1]), Events.parseEase(args[2]));
+	}
+
+	function endCamShake(tag:String):Void{
+		var args = Events.getArgs(tag);
+		playstate.endCamShake(Events.parseTime(args[0]), Events.parseEase(args[1]));
+	}
+	
+	function camFocusBf(tag:String):Void{
+		var args = Events.getArgs(tag);
+		playstate.camFocusBF(Events.parseFloat(args[0]), Events.parseFloat(args[1]), Events.parseTime(args[2]), Events.parseEase(args[3]));
+	}
+	
+	function camFocusDad(tag:String):Void{
+		var args = Events.getArgs(tag);
+		playstate.camFocusOpponent(Events.parseFloat(args[0]), Events.parseFloat(args[1]), Events.parseTime(args[2]), Events.parseEase(args[3]));
+	}
+	
+	function camFocusGf(tag:String):Void{
+		var args = Events.getArgs(tag);
+		playstate.camFocusGF(Events.parseFloat(args[0]), Events.parseFloat(args[1]), Events.parseTime(args[2]), Events.parseEase(args[3]));
+	}
+	
+	function camFocusCenter(tag:String):Void{
+		var args = Events.getArgs(tag);
+		var pos:FlxPoint = new FlxPoint(FlxMath.lerp(playstate.getOpponentFocusPosition().x, playstate.getBfFocusPostion().x, 0.5), FlxMath.lerp(playstate.getOpponentFocusPosition().y, playstate.getBfFocusPostion().y, 0.5));
+		playstate.camMove(pos.x + Events.parseFloat(args[0]), pos.y + Events.parseFloat(args[1]), Events.parseTime(args[2]), Events.parseEase(args[3]), "center");
+	}
+	
+	function camShake(tag:String):Void{
+		var args = Events.getArgs(tag);
+		playstate.camShake(Events.parseFloat(args[0]), Events.parseTime(args[1]), Events.parseTime(args[2]), Events.parseTime(args[3]), Events.parseEase(args[4]));
+	}
+	
+	function setDynamicCamAmount(tag:String):Void{
+		var args = Events.getArgs(tag);
+		playstate.camOffsetAmount = Events.parseFloat(args[0]);
+	}
+
+
+
+	//Event descriptions. Not required but it helps with charting.
+	final CAM_MOVE_DESC:String = "Moves the camera over time.";
+	final CAM_ZOOM_DESC:String = "Change the camera zoom over time.";
+
+	final FLASH_DESC:String = "Flashes the game camera with a color.";
+	final FLASH_HUD_DESC:String = "Flashes the HUD camera with a color.";
+	final FADE_OUT_DESC:String = "Fades the game camera to a color.";
+	final FADE_OUT_HUD_DESC:String = "Fades the HUD camera to a color.";
+
+	final CAM_SHAKE_DESC:String = "Temporarily shakes the game camera.";
+	final CAM_SHAKE_START_DESC:String = "Starts to shakes the game camera.";
+	final CAM_SHAKE_END_DESC:String = "Stops shaking the game camera.";
+
+	final CAM_FOCUS_BF_DESC:String = "Focuses the camera on BF.";
+	final CAM_FOCUS_DAD_DESC:String = "Focuses the camera on Dad.";
+	final CAM_FOCUS_GF_DESC:String = "Focuses the camera on GF.";
+	final CAM_FOCUS_CENTER_DESC:String = "Focuses the camera half way between BF and Dad.";
+
+	final TOGGLE_CAM_BOP_DESC:String = "Toggles whether the camera automatically bops on beat.";
+	final TOGGLE_CAM_MOVEMENT_DESC:String = "Toggles whether the camera automatically focuses on BF or Dad based on hit sections.";
+
+	final CAM_BOP_DESC:String = "Manually does a camera bop.";
+	final CAM_BOP_BIG_DESC:String = "Manually does a large camera bop.";
+	final CAM_BOP_FREQ_DESC:String = "Sets the interval that the camera bops.";
+	final CAM_BOP_INTENSITY_DESC:String = "Sets a multiplier to the intensity of camera bops.";
+
+	final SET_DYNAMIC_CAM_AMOUNT_DESC:String = "Sets the distance the camera moves when hitting a note with dynamic camera turned on.";
+}

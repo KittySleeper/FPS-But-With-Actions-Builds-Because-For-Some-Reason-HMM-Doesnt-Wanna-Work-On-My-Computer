@@ -1,0 +1,14 @@
+{
+    "name": "South (Pico Mix)",
+    "artist": "Six Impala (ft. Saster)",
+    "album": "vol4",
+    "difficulties": [
+        2,
+        2,
+        7
+    ],
+    "compatibleInsts": ["#south"],
+	"compatableInsts": ["Included for backwards compatibility purposes and to prevent crashes."],
+    "mixName": "Pico Mix",
+    "pauseMusic": "pause/911825_woah_Loop"
+}

@@ -1,0 +1,25 @@
+package characters;
+
+class Monster extends CharacterInfoBase
+{
+
+	public function new(){
+		super();
+
+		info.name = "monster";
+		info.spritePath = "week2/monster";
+		info.frameLoadType = setAtlas();
+		
+		info.iconName = "monster";
+		info.focusOffset.set(150, -49);
+
+		addByLabel("idle", offset(), "Idle", 24, loop(true, -6));
+		addByLabel("singUP", offset(), "Sing Up", 24, loop(true, -12));
+		addByLabel("singDOWN", offset(), "Sing Down", 24, loop(true, -12));
+		addByLabel("singLEFT", offset(), "Sing Left", 24, loop(true, -12));
+		addByLabel("singRIGHT", offset(), "Sing Right", 24, loop(true, -12));
+
+		addExtraData("reposition", [14, 4]);
+	}
+
+}

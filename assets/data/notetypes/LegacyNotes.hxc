@@ -1,0 +1,148 @@
+package notetypes;
+
+import flixel.tweens.FlxEase;
+import flixel.FlxG;
+
+class LegacyNotes extends NoteType
+{
+
+	override function defineTypes():Void{
+		registerNoteType({prefix: "alt", noteHit: altHit, sustainHit: altHit, editor: {hidden: true}});
+		registerNoteType({prefix: "censor", noteHit: censorHit, sustainHit: censorHit, editor: {hidden: true}});
+		registerNoteType({prefix: "hey", noteHit: heyHit, sustainHit: noSustainAnimation, editor: {hidden: true, arguments: [
+			{name: "Dynamic Camera Movement", type: "bool", value: "true"}
+		]}});
+		registerNoteType({prefix: "week-2-cheer", noteHit: cheerHit, sustainHit: noSustainAnimation, editor: {hidden: true, arguments: [
+			{name: "Dynamic Camera Movement", type: "bool", value: "true"}
+		]}});
+		registerNoteType({prefix: "ugh", noteHit: ughHit, sustainHit: noSustainAnimation, editor: {hidden: true, arguments: [
+			{name: "Dynamic Camera Movement", type: "bool", value: "true"}
+		]}});
+		registerNoteType({prefix: "argh", noteHit: arghHit, sustainHit: noSustainAnimation, editor: {hidden: true, arguments: [
+			{name: "Dynamic Camera Movement", type: "bool", value: "true"}
+		]}});
+		registerNoteType({prefix: "shit", noteHit: shitHit, sustainHit: noSustainAnimation, editor: {hidden: true, arguments: [
+			{name: "Dynamic Camera Movement", type: "bool", value: "true"}
+		]}});
+		registerNoteType({prefix: "shit-censor", noteHit: shitCensorHit, sustainHit: noSustainAnimation, editor: {hidden: true, arguments: [
+			{name: "Dynamic Camera Movement", type: "bool", value: "true"}
+		]}});
+		registerNoteType({prefix: "burp", noteHit: burpHit, sustainHit: noSustainAnimation, editor: {hidden: true, arguments: [
+			{name: "Dynamic Camera Movement", type: "bool", value: "true"}
+		]}});
+		registerNoteType({prefix: "burpBig", noteHit: burpBigHit, sustainHit: noSustainAnimation, editor: {hidden: true, arguments: [
+			{name: "Dynamic Camera Movement", type: "bool", value: "true"}
+		]}});
+	}
+
+
+
+	function altHit(note:Note, character:Character){
+		var prevAnimSet = character.animSet;
+		character.animSet = "alt";
+		playstate.defaultNoteHit(note, character);
+		character.animSet = prevAnimSet;
+	}
+
+	function censorHit(note:Note, character:Character){
+		var prevAnimSet = character.animSet;
+		character.animSet = "censor";
+		playstate.defaultNoteHit(note, character);
+		character.animSet = prevAnimSet;
+	}
+	
+
+
+	function noSustainAnimation(note:Note, character:Character){
+		if(character.canAutoAnim && shouldPlayAnimation(note, character)){
+			character.holdTimer = 0;
+		}
+	}
+
+
+
+	function heyHit(note:Note, character:Character){
+		var args = NoteType.getArgs(note.type);
+		if(character.canAutoAnim && shouldPlayAnimation(note, character)){
+			character.singAnim("hey", true);
+		}
+		if(Events.parseBool(args[0])){
+			playstate.getExtraCamMovement(note);
+		}
+	}
+
+	function cheerHit(note:Note, character:Character){
+		var args = NoteType.getArgs(note.type);
+		if(character.canAutoAnim && shouldPlayAnimation(note, character)){
+			character.singAnim("cheer", true);
+		}
+		if(Events.parseBool(args[0])){
+			playstate.getExtraCamMovement(note);
+		}
+	}
+
+
+
+	function ughHit(note:Note, character:Character){
+		var args = NoteType.getArgs(note.type);
+		if(character.canAutoAnim && shouldPlayAnimation(note, character)){
+			character.singAnim("ugh", true);
+		}
+		if(Events.parseBool(args[0])){
+			playstate.getExtraCamMovement(note);
+		}
+	}
+	
+	function arghHit(note:Note, character:Character){
+		var args = NoteType.getArgs(note.type);
+		if(character.canAutoAnim && shouldPlayAnimation(note, character)){
+			character.singAnim("argh", true);
+		}
+		if(Events.parseBool(args[0])){
+			playstate.getExtraCamMovement(note);
+		}
+	}
+
+
+
+	function shitHit(note:Note, character:Character){
+		var args = NoteType.getArgs(note.type);
+		if(character.canAutoAnim && shouldPlayAnimation(note, character)){
+			character.singAnim("shit", true);
+		}
+		if(Events.parseBool(args[0])){
+			playstate.getExtraCamMovement(note);
+		}
+	}
+
+	function shitCensorHit(note:Note, character:Character){
+		var args = NoteType.getArgs(note.type);
+		if(character.canAutoAnim && shouldPlayAnimation(note, character)){
+			character.singAnim("shit-censor", true);
+		}
+		if(Events.parseBool(args[0])){
+			playstate.getExtraCamMovement(note);
+		}
+	}
+
+	function burpHit(note:Note, character:Character){
+		var args = NoteType.getArgs(note.type);
+		if(character.canAutoAnim && shouldPlayAnimation(note, character)){
+			character.singAnim("burp", true);
+		}
+		if(Events.parseBool(args[0])){
+			playstate.getExtraCamMovement(note);
+		}
+	}
+
+	function burpBigHit(note:Note, character:Character){
+		var args = NoteType.getArgs(note.type);
+		if(character.canAutoAnim && shouldPlayAnimation(note, character)){
+			character.singAnim("burpBig", true);
+		}
+		if(Events.parseBool(args[0])){
+			playstate.getExtraCamMovement(note);
+		}
+	}
+
+}

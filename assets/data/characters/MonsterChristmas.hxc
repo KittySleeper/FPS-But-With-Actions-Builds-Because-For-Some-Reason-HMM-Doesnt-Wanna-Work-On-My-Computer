@@ -1,0 +1,25 @@
+package characters;
+
+class MonsterChristmas extends CharacterInfoBase
+{
+
+	public function new(){
+		super();
+
+		info.name = "monster-christmas";
+		info.spritePath = "week2/monster";
+		info.frameLoadType = setAtlas();
+		
+		info.iconName = "monster";
+		info.focusOffset.set(150, -68);
+
+		addByLabel("idle", offset(), "Idle Santa", 24, loop(true, -6));
+		addByLabel("singUP", offset(), "Sing Up Santa", 24, loop(true, -12));
+		addByLabel("singDOWN", offset(), "Sing Down Santa", 24, loop(true, -12));
+		addByLabel("singLEFT", offset(), "Sing Left Santa", 24, loop(true, -12));
+		addByLabel("singRIGHT", offset(), "Sing Right Santa", 24, loop(true, -12));
+
+		addExtraData("reposition", [14, 4]);
+	}
+
+}

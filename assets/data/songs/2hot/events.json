@@ -1,0 +1,832 @@
+{
+	"events": [
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 0
+		},
+		{
+			"tag": "camFocusBf",
+			"lane": 0,
+			"time": 5274.72527472527509
+		},
+		{
+			"tag": "camFocusCenter;0;-100",
+			"lane": 0,
+			"time": 9560.43956043956
+		},
+		{
+			"tag": "camZoom;0.68;2b;quartOut",
+			"lane": 1,
+			"time": 9560.43956043956
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 10549.4505494505502
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 10714.2857142857
+		},
+		{
+			"tag": "camZoom;0.75;1.9;expoOut",
+			"lane": 1,
+			"time": 10714.2857142857
+		},
+		{
+			"tag": "camFocusBf",
+			"lane": 0,
+			"time": 15824.1758241758289
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 21098.9010989011076
+		},
+		{
+			"tag": "camFocusBf",
+			"lane": 0,
+			"time": 26373.6263736263863
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 31648.3516483516651
+		},
+		{
+			"tag": "camFocusBf",
+			"lane": 0,
+			"time": 36923.0769230769292
+		},
+		{
+			"tag": "camFocusCenter;0;-100",
+			"lane": 0,
+			"time": 41208.7912087912
+		},
+		{
+			"tag": "camZoom;0.68;2b;quartOut",
+			"lane": 1,
+			"time": 41208.7912087912
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 42197.8021978021934
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 42362.6373626374
+		},
+		{
+			"tag": "camZoom;0.75;1.9;expoOut",
+			"lane": 1,
+			"time": 42362.6373626374
+		},
+		{
+			"tag": "camFocusBf",
+			"lane": 0,
+			"time": 43516.4835164835094
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 44835.1648351648255
+		},
+		{
+			"tag": "camFocusBf",
+			"lane": 0,
+			"time": 46153.8461538461415
+		},
+		{
+			"tag": "camFocusCenter;0;-100",
+			"lane": 0,
+			"time": 51758.2417582417
+		},
+		{
+			"tag": "camZoom;0.68;2b;quartOut",
+			"lane": 1,
+			"time": 51758.2417582417
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 52747.2527472527217
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 52912.0879120879
+		},
+		{
+			"tag": "camZoom;0.75;1.9;expoOut",
+			"lane": 1,
+			"time": 52912.0879120879
+		},
+		{
+			"tag": "camFocusBf",
+			"lane": 0,
+			"time": 55384.6153846153538
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 55384.6153846154
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 55714.2857142857
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 56043.956043956
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 56373.6263736263
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 56703.2967032967
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 57032.967032967
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 57362.6373626373
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 57692.3076923077
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 58021.978021978
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 58351.6483516483
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 58681.3186813186
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 59010.989010989
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 59340.6593406593
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 59670.3296703296
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 60000
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 60329.6703296703
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 60659.3406593406
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 60659.340659340618
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 60989.0109890109
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 61318.6813186813
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 61648.3516483516
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 61978.0219780219
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 62307.6923076923
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 62637.3626373626
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 62967.0329670329
+		},
+		{
+			"tag": "camFocusBf",
+			"lane": 0,
+			"time": 63296.7032967032501
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 63296.7032967033
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 63626.3736263736
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 63956.0439560439
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 64285.7142857142
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 64615.3846153846
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 64945.0549450549
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 65274.7252747252
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 65604.3956043956
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 65934.0659340658895
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 66593.4065934065
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 67912.0879120879
+		},
+		{
+			"tag": "camFocusBf",
+			"lane": 0,
+			"time": 68571.4285714285361
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 69230.7692307692
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 70549.4505494505
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 71208.7912087911827
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 71868.1318681318
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 73186.8131868132
+		},
+		{
+			"tag": "camFocusBf",
+			"lane": 0,
+			"time": 73846.1538461538294
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 74505.4945054945
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 75824.1758241758
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 76483.5164835165
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 76813.1868131868
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 77142.8571428571
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 77472.5274725275
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 77802.1978021978
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 78131.8681318681
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 78461.5384615385
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 78791.2087912088
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 79120.8791208791
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 79450.5494505495
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 79780.2197802198
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 80109.8901098901
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 80439.5604395604
+		},
+		{
+			"tag": "camFocusCenter;0;-100",
+			"lane": 0,
+			"time": 80769.2307692308
+		},
+		{
+			"tag": "camZoom;0.68;2b;quartOut",
+			"lane": 1,
+			"time": 80769.2307692308
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 80769.2307692308
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 81098.9010989011
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 81428.5714285714
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 81758.2417582417693
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 81758.2417582418
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 81923.0769230769
+		},
+		{
+			"tag": "camZoom;0.75;1.9;expoOut",
+			"lane": 1,
+			"time": 81923.0769230769
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 82087.9120879121
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 82417.5824175824
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 82747.2527472528
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 83076.9230769231
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 83406.5934065934
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 83736.2637362637
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 84065.9340659341
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 84395.6043956044
+		},
+		{
+			"tag": "camFocusBf",
+			"lane": 0,
+			"time": 84395.6043956044159
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 84725.2747252748
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 85054.9450549451
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 85384.6153846154
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 85714.2857142857
+		},
+		{
+			"tag": "camFocusCenter;0;-100",
+			"lane": 0,
+			"time": 86043.9560439561
+		},
+		{
+			"tag": "camZoom;0.68;2b;quartOut",
+			"lane": 1,
+			"time": 86043.9560439561
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 86043.9560439561
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 86373.6263736264
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 86703.2967032967
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 87032.9670329670626
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 87197.8021978022
+		},
+		{
+			"tag": "camZoom;0.75;1.9;expoOut",
+			"lane": 1,
+			"time": 87197.8021978022
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 87692.3076923077
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 89010.989010989
+		},
+		{
+			"tag": "camFocusBf",
+			"lane": 0,
+			"time": 89670.3296703297092
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 90329.6703296704
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 91648.3516483517
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 92307.6923076923558
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 92967.032967033
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 94285.7142857143
+		},
+		{
+			"tag": "camFocusBf",
+			"lane": 0,
+			"time": 94945.054945055
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 95604.3956043957
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 96923.076923077
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 97582.4175824176491
+		},
+		{
+			"tag": "camFocusBf",
+			"lane": 0,
+			"time": 102857.142857142942
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 108131.868131868
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 108461.538461539
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 108791.208791209
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 109120.879120879
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 109450.54945055
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 109780.21978022
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 110109.89010989
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 110439.560439561
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 110769.230769231
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 111098.901098901
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 111428.571428572
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 111758.241758242
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 112087.912087912
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 112417.582417583
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 112747.252747253
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 113076.923076923
+		},
+		{
+			"tag": "camFocusDad",
+			"lane": 0,
+			"time": 113406.593406593529
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 113406.593406594
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 113736.263736264
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 114065.934065934
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 114395.604395605
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 114725.274725275
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 115054.945054945
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 115384.615384616
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 115714.285714286
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 116043.956043956
+		},
+		{
+			"tag": "camFocusBf",
+			"lane": 0,
+			"time": 116043.956043956176
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 116373.626373627
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 116703.296703297
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 117032.967032967
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 117362.637362637
+		},
+		{
+			"tag": "camFocusCenter;0;-100",
+			"lane": 0,
+			"time": 117692.307692308
+		},
+		{
+			"tag": "camZoom;0.68;2b;quartOut",
+			"lane": 1,
+			"time": 117692.307692308
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 117692.307692308
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 118021.978021978
+		},
+		{
+			"tag": "camBop",
+			"lane": 2,
+			"time": 118351.648351648
+		},
+		{
+			"tag": "toggleCamBop",
+			"lane": 2,
+			"time": 119010.989010989
+		}
+	],
+	"meta": {
+		"format": "fpsplus_1"
+	}
+}

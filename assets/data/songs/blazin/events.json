@@ -1,0 +1,57 @@
+{
+	"events": [
+		{
+			"tag": "setBopFreq;bf;0;0",
+			"lane": 2,
+			"time": 0
+		},
+		{
+			"tag": "setBopFreq;dad;0;0",
+			"lane": 3,
+			"time": 0
+		},
+		{
+			"tag": "phillyBlazin-toggleLightning",
+			"lane": 0,
+			"time": 35333.3333333333
+		},
+		{
+			"tag": "phillyBlazin-lightning",
+			"lane": 0,
+			"time": 37333.3333333333
+		},
+		{
+			"tag": "phillyStreets-setRainSpeed;0.07;2.5;quadOut",
+			"lane": 1,
+			"time": 37333.3333333333
+		},
+		{
+			"tag": "phillyStreets-setRainSpeed;1;1b;quadIn",
+			"lane": 0,
+			"time": 42500
+		},
+		{
+			"tag": "phillyBlazin-toggleLightning",
+			"lane": 0,
+			"time": 42666.6666666667
+		},
+		{
+			"tag": "phillyBlazin-toggleLightning",
+			"lane": 0,
+			"time": 115333.333333333
+		},
+		{
+			"tag": "phillyBlazin-lightning",
+			"lane": 0,
+			"time": 117333.333333333
+		},
+		{
+			"tag": "phillyStreets-setRainSpeed;0.07;2.5;quadOut",
+			"lane": 1,
+			"time": 117333.333333333
+		}
+	],
+	"meta": {
+		"format": "fpsplus_1"
+	}
+}

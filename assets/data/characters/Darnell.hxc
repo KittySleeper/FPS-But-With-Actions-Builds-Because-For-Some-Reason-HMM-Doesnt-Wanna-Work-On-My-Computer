@@ -1,0 +1,34 @@
+package characters;
+
+class Darnell extends CharacterInfoBase
+{
+
+	public function new(){
+		super();
+
+		info.name = "darnell";
+		info.spritePath = "weekend1/darnell";
+		info.frameLoadType = setAtlas();
+		
+		info.iconName = "darnell";
+		info.focusOffset.set(88, -123);
+
+		addByLabel("idle", offset(), "Idle", 24, loop(false));
+		addByLabel("idleLoop", offset(), "Idle", 24, loop(true, 0), false, false);
+		addByLabel("singUP", offset(), "Pose Up", 24, loop(true, -8));
+		addByLabel("singDOWN", offset(), "Pose Down", 24, loop(true, -8));
+		addByLabel("singLEFT", offset(), "Pose Left", 24, loop(true, -8));
+		addByLabel("singRIGHT", offset(), "Pose Right", 24, loop(true, -8));
+		addByStartingAtLabel("laugh", offset(), "Laugh", 12, 24, loop(false));
+		addByLabel("laughCutscene", offset(), "Laugh", 24, loop(false));
+		addByLabel("lightCan", offset(), "Light Can", 24, loop(true, -6));
+		addByLabel("kickUp", offset(), "Kick Up", 24, loop(false));
+		addByLabel("kneeForward", offset(), "Knee Forward", 24, loop(false));
+		addByLabel("pissed", offset(), "Gets Pissed", 24, loop(false));
+
+		addAnimChain("laughCutscene", "idleLoop");
+
+		addExtraData("reposition", [72, 181]);
+	}
+
+}

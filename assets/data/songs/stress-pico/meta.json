@@ -1,0 +1,14 @@
+{
+    "name": "Stress (Pico Mix)",
+    "artist": "Saruky",
+    "album": "ext2",
+    "difficulties": [
+        4,
+        5,
+        6
+    ],
+	"compatibleInsts": ["#stress"],
+	"compatableInsts": ["Included for backwards compatibility purposes and to prevent crashes."],
+	"mixName": "Pico Mix",
+	"pauseMusic": "week7/distorto"
+}

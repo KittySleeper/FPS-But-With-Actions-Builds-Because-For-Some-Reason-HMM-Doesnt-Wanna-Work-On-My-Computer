@@ -1,0 +1,65 @@
+package characters;
+
+import shaders.TextureMixShader;
+
+class BfDark extends CharacterInfoBase
+{
+
+	public function new(){
+		super();
+
+		info.name = "bf-dark";
+		info.spritePath = "week2/boyfriend_dark";
+		info.frameLoadType = setAtlas();
+		
+		info.iconName = "bf";
+		info.facesLeft = true;
+		info.focusOffset.set(130, -84);
+
+		addByLabel("idle", offset(), "Idle", 24, loop(false));
+
+		addByLabel("singUP", offset(), "Sing Up", 24, loop(false));
+		addByLabel("singLEFT", offset(), "Sing Left", 24, loop(false));
+		addByLabel("singRIGHT", offset(), "Sing Right", 24, loop(false));
+		addByLabel("singDOWN", offset(), "Sing Down", 24, loop(false));
+
+		addByLabel("singUPmiss", offset(), "Miss Up", 24, loop(true, -4));
+		addByLabel("singLEFTmiss", offset(), "Miss Left", 24, loop(true, -4));
+		addByLabel("singRIGHTmiss", offset(), "Miss Right", 24, loop(true, -4));
+		addByLabel("singDOWNmiss", offset(), "Miss Down", 24, loop(true, -4));
+
+		addByLabel("hey", offset(), "Cheer", 24, loop(false));
+		addByLabel("cheer", offset(), "Yeah", 24, loop(false));
+		addByLabel("scared", offset(), "Scared", 24);
+
+		info.functions.postCreate = postCreate;
+
+		addAction("flashOn", flashOn);
+		addAction("flashOff", flashOff);
+		addAction("flashFade", flashFade);
+
+		addExtraData("useRenderTexture", false); //Required to use the texture mix shader on a texture atlas like this.
+		addExtraData("reposition", [32, 5]);
+	}
+
+	var flashShader:TextureMixShader = new TextureMixShader(Paths.image("shared/boyfriend/spritemap1"));
+
+	function postCreate(character:Character):Void{
+		character.applyShader(flashShader.shader);
+		flashShader.mix = 0;
+	}
+
+	function flashOn(character:Character):Void{
+		flashShader.mix = 1;
+	}
+
+	function flashOff(character:Character):Void{
+		flashShader.mix = 0;
+	}
+
+	function flashFade(character:Character):Void{
+		flashShader.mix = 1;
+		playstate.tweenManager.tween(flashShader, {mix: 0}, 1.5);
+	}
+
+}

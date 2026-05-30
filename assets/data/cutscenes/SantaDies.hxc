@@ -1,0 +1,97 @@
+package cutscenes;
+
+import flixel.sound.FlxSound;
+import flixel.FlxG;
+import flixel.tweens.FlxEase;
+
+class SantaDies extends ScriptedCutscene
+{
+	var santa:AtlasSprite;
+	var parents:AtlasSprite;
+
+	var santaTalk:FlxSound;
+	var santaShotSound:FlxSound;
+
+	public function new(args:Array<Dynamic>){
+		super(args);
+		
+		santa = new AtlasSprite(-452, 501, Paths.getTextureAtlas("week5/santa_speaks_assets"));
+		santa.applyStageMatrix = true;
+		santa.antialiasing = true;
+		santa.addFullAnimation("full", 24, false);
+		if(playstate.stage.name == "mallErect"){
+			santa.shader = playstate.stage.scriptGet("santa").shader;
+		}
+
+		parents = new AtlasSprite(-517, 503, Paths.getTextureAtlas("week5/parents_shoot_assets"));
+		parents.applyStageMatrix = true;
+		parents.antialiasing = true;
+		parents.addFullAnimation("full", 24, false);
+		parents.animationEndCallback = function(name:String) {
+			if(name == "full"){
+				next();
+			}
+		};
+		parents.shader = dad.getShader();
+
+		santaTalk = Utils.createPausedSound(Paths.sound("week5/santa_emotion"));
+		santaShotSound = Utils.createPausedSound(Paths.sound("week5/santa_shot_n_falls"));
+
+		addEvent(0, setup);
+		addEvent(1/24, gfIdleLoop);
+		addEvent(2.5, cameraZoom);
+		addEvent(11.3, santaShot);
+		addEvent(12.3, santaFall);
+		addEvent(12.8, santaShake);
+	}
+
+	override function update(elapsed:Float) {
+		super.update(elapsed);
+	}
+
+	function setup(){
+		addToCharacterLayer(parents);
+		parents.playAnim("full", true);
+		dad.visible = false;
+
+		addToForegroundLayer(santa);
+		santa.playAnim("full", true);
+		playstate.executeEvent("mall-toggleSantaVisible");
+
+		playstate.autoCam = false;
+		playstate.camFocusOpponent(-300, 70, 2.5, FlxEase.cubeInOut);
+		playstate.camChangeZoom(0.9, 2.5, FlxEase.cubeInOut);
+		playstate.changeCamOffset(0, 0);
+		fadeOutHud();
+
+		santaTalk.play();
+	}
+
+	function gfIdleLoop(){
+		var frame:Int = gf.curAnimFrame();
+		var frameOffset:Int = 0;
+		if(gf.curAnim == "danceRight"){ frameOffset = 16; }
+		var finalFrame:Int = (frame + frameOffset) % 31;
+		gf.canAutoAnim = false;
+		gf.playAnim("idleLoop", true, false, finalFrame);
+	}
+
+	function cameraZoom(){
+		playstate.camFocusOpponent(-390, 70, 8, FlxEase.cubeInOut);
+		playstate.camChangeZoom(1.05, 8, FlxEase.cubeInOut);
+	}
+	
+	function santaShot(){
+		playstate.camFocusOpponent(-360, 70, 1, FlxEase.expoOut);
+		playstate.camChangeZoom(0.85, 1, FlxEase.expoOut);
+		santaShotSound.play();
+	}
+	
+	function santaFall(){
+		playstate.camFocusOpponent(-360, 150, 1, FlxEase.expoInOut);
+	}
+	
+	function santaShake(){
+		playstate.camShake(0.03, 1/45, 0.15, 1/60);
+	}
+}

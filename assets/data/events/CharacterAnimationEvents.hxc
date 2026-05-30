@@ -1,0 +1,230 @@
+package events;
+
+import characters.ScriptableCharacter;
+
+class CharacterAnimationEvents extends Events
+{
+	override function defineEvents() {
+		registerEvent({prefix: "playAnim", eventFunction: playAnim, editor: {description: PLAY_ANIM_DESC, arguments: [
+			{name: "Character", type: "character", value: "bf"}, {name: "Animation", type: "string", value: ""}, {name: "Force", type: "bool", value: "false"}, {name: "Reverse", type: "bool", value: "false"}, {name: "Start Frame", type: "int", value: "0"}
+		]}});
+		registerEvent({prefix: "singAnim", eventFunction: singAnim, editor: {description: SING_ANIM_DESC, arguments: [
+			{name: "Character", type: "character", value: "bf"}, {name: "Animation", type: "string", value: ""}, {name: "Force", type: "bool", value: "false"}, {name: "Reverse", type: "bool", value: "false"}, {name: "Start Frame", type: "int", value: "0"}
+		]}});
+		registerEvent({prefix: "setAnimSet", eventFunction: setAnimSet, editor: {description: SET_ANIM_SET_DESC, arguments: [
+			{name: "Character", type: "character", value: "bf"}, {name: "Animation Set", type: "string", value: ""}
+		]}});
+
+		registerEvent({prefix: "setBopFreq", eventFunction: setBopFreq, executeAtStart: true, editor: {description: SET_BOP_FREQ_DESC, arguments: [
+			{name: "Character", type: "character", value: "bf"}, {name: "Bop Every", type: "int", value: "2"}, {name: "Beat Offset", type: "int", value: "0"}
+		]}});
+		registerEvent({prefix: "iconBopFreq", eventFunction: iconBopFreq, editor: {description: ICON_BOP_FREQ_DESC, arguments: [
+			{name: "Bop Every", type: "int", value: "4"}
+		]}});
+
+		registerEvent({prefix: "toggleAnimLock", eventFunction: toggleAnimLock, editor: {description: TOGGLE_ANIM_LOCK_DESC, arguments: [
+			{name: "Character", type: "character", value: "bf"}
+		]}});
+
+		registerEvent({prefix: "changeCharacter", eventFunction: changeCharacter, preprocessFunction: changeCharacterPreprocess, editor: {description: CHANGE_CHARACTER_DESC, arguments: [
+			{name: "Character", type: "character", value: "bf"}, {name: "Swap To", type: "string", value: "Bf"}, {name: "Copy Shader", type: "bool", value: "true"}
+		]}});
+
+		registerEvent({prefix: "swapCharacters", eventFunction: swapCharacters, editor: {description: SWAP_CHARACTER_DESC}});
+	}
+
+	function playAnim(tag:String):Void{
+		var args = Events.getArgs(tag);
+
+		switch(args[0]){
+			case "dad":
+				dad.playAnim(args[1], Events.parseBool(args[2]), Events.parseBool(args[3]), Events.parseInt(args[4]));
+
+			case "gf":
+				gf.playAnim(args[1], Events.parseBool(args[2]), Events.parseBool(args[3]), Events.parseInt(args[4]));
+
+			default:
+				boyfriend.playAnim(args[1], Events.parseBool(args[2]), Events.parseBool(args[3]), Events.parseInt(args[4]));
+		}
+	}
+
+	function singAnim(tag:String):Void{
+		var args = Events.getArgs(tag);
+
+		switch(args[0]){
+			case "dad":
+				dad.singAnim(args[1], Events.parseBool(args[2]), Events.parseBool(args[3]), Events.parseInt(args[4]));
+
+			case "gf":
+				gf.singAnim(args[1], Events.parseBool(args[2]), Events.parseBool(args[3]), Events.parseInt(args[4]));
+
+			default:
+				boyfriend.singAnim(args[1], Events.parseBool(args[2]), Events.parseBool(args[3]), Events.parseInt(args[4]));
+		}
+	}
+
+	function setAnimSet(tag:String):Void{
+		var args = Events.getArgs(tag);
+
+		switch(args[0]){
+			case "dad":
+				dad.animSet = args[1];
+
+			case "gf":
+				gf.animSet = args[1];
+
+			default:
+				boyfriend.animSet = args[1];
+		}
+	}
+
+	function iconBopFreq(tag:String):Void{
+		var args = Events.getArgs(tag);
+		playstate.iconBopFrequency = Events.parseInt(args[0]);
+	}
+
+	function setBopFreq(tag:String):Void{
+		var args = Events.getArgs(tag);
+		switch(args[0]){
+			case "dad":
+				playstate.dadBopEvery = Events.parseInt(args[1]);
+				playstate.dadBopOffset = Events.parseInt(args[2]);
+			case "gf":
+				playstate.gfBopEvery = Events.parseInt(args[1]);
+				playstate.gfBopOffset = Events.parseInt(args[2]);
+			default:
+				playstate.bfBopEvery = Events.parseInt(args[1]);
+				playstate.bfBopOffset = Events.parseInt(args[2]);
+		}
+	}
+
+	function toggleAnimLock(tag:String):Void{
+		var args = Events.getArgs(tag);
+		switch(args[0]){
+			case "dad":
+				dad.canAutoAnim = !dad.canAutoAnim;
+			case "gf":
+				gf.canAutoAnim = !gf.canAutoAnim;
+			default:
+				boyfriend.canAutoAnim = !boyfriend.canAutoAnim;
+		}
+	}
+
+	function changeCharacter(tag:String):Void{
+		var args = Events.getArgs(tag);
+
+		if(!ScriptableCharacter.listScriptClasses().contains("characters." + args[1]) && !ScriptableCharacter.listScriptClasses().contains(args[1])){
+			trace("Invalid character: " + args[1]);
+			return;
+		}
+
+		switch(args[0]){
+			case "dad":
+				if (dad.charClass == args[1]){ return; }
+
+				var newCharacter = new Character(dad.x, dad.y, args[1]);
+				playstate.iconP2.setIconCharacter(newCharacter.iconName);
+
+				if((playstate.stage.useStartPoints && !playstate.stage.overrideDadStartPoints) || (!playstate.stage.useStartPoints && playstate.stage.overrideDadStartPoints)){
+					newCharacter.setPosition(playstate.stage.dadStart.x - ((newCharacter.getFrameWidth() * newCharacter.getScale().x)/2), playstate.stage.dadStart.y - (newCharacter.getFrameHeight() * newCharacter.getScale().y));
+				}
+				newCharacter.reposition();
+
+				if(newCharacter.getShader() == null && dad.getShader() != null && Events.parseBool(args[2])){
+					newCharacter.applyShader(dad.getShader());
+					if(ReflectUtil.hasInstanceFieldOf(dad.getShader(), "attachCharacter")){
+						newCharacter.getShader().attachCharacter(newCharacter);
+					}
+				}
+
+				playstate.characterLayer.replace(playstate.dad, newCharacter);
+				playstate.dad = newCharacter;
+
+			case "gf":
+				if (gf.charClass == args[1]){ return; }
+
+				var newCharacter = new Character(gf.x, gf.y, args[1], false, true);
+
+				if((playstate.stage.useStartPoints && !playstate.stage.overrideGfStartPoints) || (!playstate.stage.useStartPoints && playstate.stage.overrideGfStartPoints)){
+					newCharacter.setPosition(playstate.stage.gfStart.x - ((newCharacter.getFrameWidth() * newCharacter.getScale().x)/2), playstate.stage.gfStart.y - (newCharacter.getFrameHeight() * newCharacter.getScale().y));
+				}
+				newCharacter.reposition();
+
+				if(newCharacter.getShader() == null && gf.getShader() != null && Events.parseBool(args[2])){
+					newCharacter.applyShader(gf.getShader());
+					if(ReflectUtil.hasInstanceFieldOf(gf.getShader(), "attachCharacter")){
+						newCharacter.getShader().attachCharacter(newCharacter);
+					}
+				}
+
+				playstate.gfLayer.replace(playstate.gf, newCharacter);
+				playstate.gf = newCharacter;
+
+			default:
+				if (boyfriend.charClass == args[1]){ return; }
+
+				var newCharacter = new Character(boyfriend.x, boyfriend.y, args[1], true);
+				playstate.iconP1.setIconCharacter(newCharacter.iconName);
+
+				if((playstate.stage.useStartPoints && !playstate.stage.overrideBfStartPoints) || (!playstate.stage.useStartPoints && playstate.stage.overrideBfStartPoints)){
+					newCharacter.setPosition(playstate.stage.bfStart.x - ((newCharacter.getFrameWidth() * newCharacter.getScale().x)/2), playstate.stage.bfStart.y - (newCharacter.getFrameHeight() * newCharacter.getScale().y));
+				}
+				newCharacter.reposition();
+
+				if(newCharacter.getShader() == null && boyfriend.getShader() != null && Events.parseBool(args[2])){
+					newCharacter.applyShader(boyfriend.getShader());
+					if(ReflectUtil.hasInstanceFieldOf(boyfriend.getShader(), "attachCharacter")){
+						newCharacter.getShader().attachCharacter(newCharacter);
+					}
+				}
+
+				playstate.characterLayer.replace(playstate.boyfriend, newCharacter);
+				playstate.boyfriend = newCharacter;
+		}
+
+		playstate.healthBarShader.leftColor = dad.characterColor;
+		playstate.healthBarShader.rightColor = boyfriend.characterColor;
+	}
+
+	function changeCharacterPreprocess(tag:String):Void{
+		var args = Events.getArgs(tag);
+		//Creates a character object and immediately destroys it.
+		//This is to cache the character's graphics so it doesn't need to load them from disk when changing characters later in the song.
+		if(!data.exists("CACHED_CHARACTER___" + args[1])){
+			var cache = new Character(0, 0, args[1]);
+			cache.destroy();
+			data.set("CACHED_CHARACTER___" + args[1], true);
+		}
+	}
+
+	function swapCharacters(tag:String):Void{
+		var tempBf = boyfriend;
+		var tempDad = dad;
+
+		playstate.characterLayer.remove(playstate.dad);
+		playstate.characterLayer.remove(playstate.boyfriend);
+
+		playstate.dad = tempBf;
+		playstate.dad.isPlayer = false;
+		playstate.characterLayer.add(playstate.dad);
+
+		playstate.boyfriend = tempDad;
+		playstate.boyfriend.isPlayer = true;
+		playstate.characterLayer.add(playstate.boyfriend);
+
+		playstate.iconP1.setIconCharacter(boyfriend.iconName);
+		playstate.iconP2.setIconCharacter(dad.iconName);
+	}
+
+
+
+	//Event descriptions. Not required but it helps with charting.
+	final PLAY_ANIM_DESC:String = "Plays an animation on a character.";
+	final SING_ANIM_DESC:String = "Plays an animation treated as a note sing direction.";
+	final SET_ANIM_SET_DESC:String = "Sets the animation set on a character. This will cause the character to play any animation suffixed with \"-animSetName\" if available.";
+	final ICON_BOP_FREQ_DESC:String = "Sets the interval that the health icons bop.";
+	final TOGGLE_ANIM_LOCK_DESC:String = "Toggles whether a character will automatically play animations.";
+	final CHANGE_CHARACTER_DESC:String = "Changes a character to a different one.";
+	final SWAP_CHARACTER_DESC:String = "Swaps which character you are playing as.";
+	final SET_BOP_FREQ_DESC:String = "Sets the interval that a character does their idle dance.";
+}

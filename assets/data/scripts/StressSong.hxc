@@ -1,0 +1,10 @@
+package scripts;
+
+class StressSong extends Script
+{
+
+	override public function create(){
+		data.set("STRESS_SONG", true);
+	}
+
+}

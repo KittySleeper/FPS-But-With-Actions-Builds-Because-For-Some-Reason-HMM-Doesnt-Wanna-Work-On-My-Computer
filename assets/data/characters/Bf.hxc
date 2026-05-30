@@ -1,0 +1,36 @@
+package characters;
+
+class Bf extends CharacterInfoBase
+{
+
+	public function new(){
+		super();
+
+		info.name = "bf";
+		info.spritePath = "shared/boyfriend";
+		info.frameLoadType = setAtlas();
+		
+		info.iconName = "bf";
+		info.facesLeft = true;
+		info.focusOffset.set(130, -84);
+
+		addByLabel("idle", offset(), "Idle", 24, loop(false));
+
+		addByLabel("singUP", offset(), "Sing Up", 24, loop(false));
+		addByLabel("singLEFT", offset(), "Sing Left", 24, loop(false));
+		addByLabel("singRIGHT", offset(), "Sing Right", 24, loop(false));
+		addByLabel("singDOWN", offset(), "Sing Down", 24, loop(false));
+
+		addByLabel("singUPmiss", offset(), "Miss Up", 24, loop(true, -4));
+		addByLabel("singLEFTmiss", offset(), "Miss Left", 24, loop(true, -4));
+		addByLabel("singRIGHTmiss", offset(), "Miss Right", 24, loop(true, -4));
+		addByLabel("singDOWNmiss", offset(), "Miss Down", 24, loop(true, -4));
+
+		addByLabel("hey", offset(), "Cheer", 24, loop(false));
+		addByLabel("cheer", offset(), "Yeah", 24, loop(false));
+		addByLabel("scared", offset(), "Scared", 24);
+
+		addExtraData("reposition", [32, 5]);
+	}
+
+}

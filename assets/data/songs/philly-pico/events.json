@@ -1,0 +1,212 @@
+{
+	"events": [
+		{
+			"tag": "camFocusBf;0;0",
+			"lane": 0,
+			"time": 0
+		},
+		{
+			"tag": "camBopFreq;8",
+			"lane": 0,
+			"time": 85
+		},
+		{
+			"tag": "camFocusDad;0;0",
+			"lane": 0,
+			"time": 2742
+		},
+		{
+			"tag": "camBopFreq;1",
+			"lane": 0,
+			"time": 2828
+		},
+		{
+			"tag": "camFocusBf;0;0",
+			"lane": 0,
+			"time": 8228
+		},
+		{
+			"tag": "camBopFreq;2",
+			"lane": 0,
+			"time": 13628
+		},
+		{
+			"tag": "camFocusDad;0;0",
+			"lane": 0,
+			"time": 13714
+		},
+		{
+			"tag": "camFocusBf;0;0",
+			"lane": 0,
+			"time": 19200
+		},
+		{
+			"tag": "camFocusDad;0;0",
+			"lane": 0,
+			"time": 24685
+		},
+		{
+			"tag": "camFocusBf;0;0",
+			"lane": 0,
+			"time": 30171
+		},
+		{
+			"tag": "camBopFreq;1",
+			"lane": 0,
+			"time": 35571
+		},
+		{
+			"tag": "camFocusDad;0;0",
+			"lane": 0,
+			"time": 35657
+		},
+		{
+			"tag": "camFocusBf;0;0",
+			"lane": 0,
+			"time": 41142
+		},
+		{
+			"tag": "camZoom;1.04;16s;expoOut;true",
+			"lane": 0,
+			"time": 43885
+		},
+		{
+			"tag": "camZoom;1.08;16s;expoOut;true",
+			"lane": 0,
+			"time": 44400
+		},
+		{
+			"tag": "camZoom;1.12;16s;expoOut;true",
+			"lane": 0,
+			"time": 44914
+		},
+		{
+			"tag": "camZoom;1.16;16s;expoOut;true",
+			"lane": 0,
+			"time": 45428
+		},
+		{
+			"tag": "camBopFreq;8",
+			"lane": 0,
+			"time": 46542
+		},
+		{
+			"tag": "camFocusDad;0;0",
+			"lane": 0,
+			"time": 46628
+		},
+		{
+			"tag": "camZoom;0.9;16s;expoOut;true",
+			"lane": 0,
+			"time": 46671
+		},
+		{
+			"tag": "camFocusBf;0;0",
+			"lane": 0,
+			"time": 52114
+		},
+		{
+			"tag": "camZoom;0.94;16s;expoOut;true",
+			"lane": 0,
+			"time": 54857
+		},
+		{
+			"tag": "camZoom;0.98;16s;expoOut;true",
+			"lane": 0,
+			"time": 55371
+		},
+		{
+			"tag": "camZoom;1.02;16s;expoOut;true",
+			"lane": 0,
+			"time": 55885
+		},
+		{
+			"tag": "camZoom;1.06;16s;expoOut;true",
+			"lane": 0,
+			"time": 56399
+		},
+		{
+			"tag": "camZoom;1.1;16s;expoOut;true",
+			"lane": 0,
+			"time": 56914
+		},
+		{
+			"tag": "camFocusDad;0;0",
+			"lane": 0,
+			"time": 57599
+		},
+		{
+			"tag": "camZoom;0.9;16s;expoOut;true",
+			"lane": 0,
+			"time": 57642
+		},
+		{
+			"tag": "camFocusBf;0;0",
+			"lane": 0,
+			"time": 63085
+		},
+		{
+			"tag": "camBopFreq;1",
+			"lane": 0,
+			"time": 68485
+		},
+		{
+			"tag": "camFocusDad;0;0",
+			"lane": 0,
+			"time": 68571
+		},
+		{
+			"tag": "camZoom;1;16s;expoOut;true",
+			"lane": 0,
+			"time": 68614
+		},
+		{
+			"tag": "camFocusBf;0;0",
+			"lane": 0,
+			"time": 74057
+		},
+		{
+			"tag": "camZoom;1.1;16s;expoOut;true",
+			"lane": 0,
+			"time": 76800
+		},
+		{
+			"tag": "camFocusDad;0;0",
+			"lane": 0,
+			"time": 79542
+		},
+		{
+			"tag": "camZoom;1;16s;expoOut;true",
+			"lane": 0,
+			"time": 79585
+		},
+		{
+			"tag": "camFocusBf;0;0",
+			"lane": 0,
+			"time": 85028
+		},
+		{
+			"tag": "camZoom;1.1;16s;expoOut;true",
+			"lane": 0,
+			"time": 87771
+		},
+		{
+			"tag": "camBopFreq;4",
+			"lane": 0,
+			"time": 90428
+		},
+		{
+			"tag": "camZoom;1;16s;expoOut;true",
+			"lane": 0,
+			"time": 90514
+		},
+		{
+			"tag": "camBopFreq;4",
+			"lane": 0,
+			"time": 101400
+		}
+	],
+	"meta": {
+		"format": "fpsplus_1"
+	}
+}

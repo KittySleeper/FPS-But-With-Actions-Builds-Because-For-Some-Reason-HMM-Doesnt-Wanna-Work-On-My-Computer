@@ -1,0 +1,64 @@
+package characters;
+
+import shaders.TextureMixShader;
+
+class GfDark extends CharacterInfoBase
+{
+
+	public function new(){
+		super();
+
+		includeInCharacterList = false;
+		includeInGfList = true;
+
+		info.name = "gf-dark";
+		info.spritePath = "week2/girlfriend_dark";
+		info.frameLoadType = setAtlas();
+		
+		info.iconName = "gf";
+		info.focusOffset.set(-20, 9);
+
+		addByLabel("danceLeft", offset(), "Idle Left", 24, loop(false));
+		addByLabel("danceRight", offset(), "Idle Right", 24, loop(false));
+		addByStartingAtLabel("idleLoop", offset(), "Idle Left", 30, 24, loop(true));
+		
+		addByLabel("cheer", offset(), "Cheer", 24, loop(false));
+		addByLabel("sad", offset(), "Sad", 24, loop(true, -8));
+		addByLabel("scared", offset(), "Scared", 24, loop(true));
+
+		//Adds a combo alias every 50 notes.
+		for(i in 1...20){ addAnimAlias("combo" + (i * 50), "cheer"); }
+
+		info.idleSequence = ["danceLeft", "danceRight"];
+		info.bopFrequency = 1;
+
+		info.functions.postCreate = postCreate;
+
+		addAction("flashOn", flashOn);
+		addAction("flashOff", flashOff);
+		addAction("flashFade", flashFade);
+
+		addExtraData("useRenderTexture", false); //Required to use the texture mix shader on a texture atlas like this.
+		addExtraData("reposition", [20, 9]);
+	}
+
+	var flashShader:TextureMixShader = new TextureMixShader(Paths.image("shared/girlfriend/spritemap1"));
+
+	function postCreate(character:Character):Void{
+		character.applyShader(flashShader.shader);
+		flashShader.mix = 0;
+	}
+
+	function flashOn(character:Character):Void{
+		flashShader.mix = 1;
+	}
+
+	function flashOff(character:Character):Void{
+		flashShader.mix = 0;
+	}
+
+	function flashFade(character:Character):Void{
+		flashShader.mix = 1;
+		playstate.tweenManager.tween(flashShader, {mix: 0}, 1.5);
+	}
+}

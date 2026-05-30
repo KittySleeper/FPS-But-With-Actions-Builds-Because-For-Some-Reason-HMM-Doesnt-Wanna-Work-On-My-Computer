@@ -1,0 +1,34 @@
+package characters;
+
+class BfCar extends CharacterInfoBase
+{
+
+	public function new(){
+		super();
+
+		info.name = "bf-car";
+		info.spritePath = "week4/boyfriend_car";
+		info.frameLoadType = setAtlas();
+		
+		info.iconName = "bf";
+		info.facesLeft = true;
+		info.focusOffset.set(130, -64);
+
+		addByLabel("idle", offset(), "Idle", 24, loop(true, -4));
+
+		addByLabel("singUP", offset(), "Sing Up", 24, loop(true, -4));
+		addByLabel("singLEFT", offset(), "Sing Left", 24, loop(true, -4));
+		addByLabel("singRIGHT", offset(), "Sing Right", 24, loop(true, -4));
+		addByLabel("singDOWN", offset(), "Sing Down", 24, loop(true, -4));
+
+		addByLabel("singUPmiss", offset(), "Miss Up", 24, loop(true, -4));
+		addByLabel("singLEFTmiss", offset(), "Miss Left", 24, loop(true, -4));
+		addByLabel("singRIGHTmiss", offset(), "Miss Right", 24, loop(true, -4));
+		addByLabel("singDOWNmiss", offset(), "Miss Down", 24, loop(true, -4));
+
+		addByLabel("hey", offset(), "Cheer", 24, loop(true, -4));
+
+		addExtraData("reposition", [32, 5]);
+	}
+
+}

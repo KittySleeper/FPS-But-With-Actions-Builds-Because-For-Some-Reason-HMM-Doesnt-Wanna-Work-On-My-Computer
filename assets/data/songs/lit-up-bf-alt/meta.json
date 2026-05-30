@@ -1,0 +1,14 @@
+{
+    "name": "Lit Up (BF Mix)",
+    "artist": "Saruky",
+    "album": "ext2",
+    "difficulties": [
+        4,
+        5,
+        6
+    ],
+	"compatibleInsts": [],
+	"compatableInsts": ["Included for backwards compatibility purposes and to prevent crashes."],
+	"mixName": "BF Mix",
+	"pauseMusic": "pause/breakfast-pico"
+}
