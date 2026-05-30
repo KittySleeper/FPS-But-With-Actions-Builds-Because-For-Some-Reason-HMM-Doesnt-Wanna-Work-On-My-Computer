@@ -1,0 +1,30 @@
+class GfCar extends CharacterInfoBase
+{
+
+	public function new(){
+		super();
+
+		includeInCharacterList = false;
+		includeInGfList = true;
+
+		info.name = "gf-car";
+		info.spritePath = "shared/girlfriend";
+		info.frameLoadType = setAtlas();
+		
+		info.iconName = "gf";
+		info.focusOffset.set(16, 12);
+
+		addByLabel("danceLeft", offset(), "Idle Left Car", 24, loop(true, -4));
+		addByLabel("danceRight", offset(), "Idle Right Car", 24, loop(true, -4));
+		addByLabel("cheer", offset(), "Cheer Car", 24, loop(true, -4));
+		addByLabel("sad", offset(), "Sad Car", 24, loop(true, -4));
+
+		//Adds a combo alias every 50 notes.
+		for(i in 1...20){ addAnimAlias("combo" + (i * 50), "cheer"); }
+
+		info.idleSequence = ["danceLeft", "danceRight"];
+
+		addExtraData("reposition", [-16, 0]);
+	}
+
+}

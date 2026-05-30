@@ -1,0 +1,30 @@
+class ParentsChristmas extends CharacterInfoBase
+{
+
+	public function new(){
+		super();
+
+		info.name = "parents-christmas";
+		info.spritePath = "week5/parents_christmas";
+		info.frameLoadType = setAtlas();
+		
+		info.iconName = "parents";
+		info.focusOffset.set(111, -84);
+
+		addByLabel("idle", offset(), "Idle", 24, loop(true, -4));
+
+		addByLabel("singUP", offset(), "Dad Up", 24, loop(true, -4));
+		addByLabel("singDOWN", offset(), "Dad Down", 24, loop(true, -4));
+		addByLabel("singLEFT", offset(), "Dad Left", 24, loop(true, -4));
+		addByLabel("singRIGHT", offset(), "Dad Right", 24, loop(true, -4));
+
+		addByLabel("singUP-alt", offset(), "Mom Up", 24, loop(true, -4));
+		addByLabel("singDOWN-alt", offset(), "Mom Down", 24, loop(true, -4));
+		addByLabel("singLEFT-alt", offset(), "Mom Left", 24, loop(true, -4));
+		addByLabel("singRIGHT-alt", offset(), "Mom Right", 24, loop(true, -4));
+
+		addExtraData("reposition", [39, 3]);
+
+	}
+
+}

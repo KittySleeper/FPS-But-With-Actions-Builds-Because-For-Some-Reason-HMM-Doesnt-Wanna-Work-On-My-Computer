@@ -1,0 +1,23 @@
+class Mom extends CharacterInfoBase
+{
+
+	public function new(){
+		super();
+
+		info.name = "mom";
+		info.spritePath = "week4/mom";
+		info.frameLoadType = setAtlas();
+		
+		info.iconName = "mom";
+		info.focusOffset.set(189, -74);
+
+		addByLabel("idle", offset(), "Idle", 24, loop(true, -4));
+		addByLabel("singUP", offset(), "Sing Up", 24, loop(true, -4));
+		addByLabel("singDOWN", offset(), "Sing Down", 24, loop(true, -4));
+		addByLabel("singLEFT", offset(), "Sing Left", 24, loop(true, -4));
+		addByLabel("singRIGHT", offset(), "Sing Right", 24, loop(true, -4));
+
+		addExtraData("reposition", [-27, 17]);
+	}
+
+}

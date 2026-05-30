@@ -1,0 +1,76 @@
+import flixel.sound.FlxSound;
+import flixel.FlxG;
+import flixel.tweens.FlxEase;
+import flixel.math.FlxMath;
+import flixel.math.FlxPoint;
+import openfl.filters.ShaderFilter;
+import shaders.DropShadowShader;
+
+class StressPicoEnding extends ScriptedCutscene
+{
+	var tankmanCutscene:AtlasSprite;
+	var	tankmanShader:DropShadowShader;
+	var cutsceneAudio:FlxSound;
+
+	public function new(args:Array<Dynamic>){
+		super(args);
+
+		tankmanShader = new DropShadowShader();
+		tankmanShader.setAdjustColor(-46, -38, -25, -20);
+		tankmanShader.color = 0xFFDFEF3C;
+		tankmanShader.angle = 45;
+		tankmanShader.threshold = 0.3;
+		
+		tankmanCutscene = new AtlasSprite(749, 521, Paths.getTextureAtlas("week7/cutscene/picoStressEnding"));
+		tankmanCutscene.applyStageMatrix = true;
+		tankmanCutscene.useRenderTexture = true;
+		tankmanCutscene.addFullAnimation("full", 24, false);
+		tankmanCutscene.shader = tankmanShader;
+		tankmanCutscene.frameCallback = function(name:String, frame:Int, index:Int){
+			tankmanShader.updateFrameInfoSimple(tankmanCutscene.frameWidth, tankmanCutscene.frameHeight, 0);
+		}
+
+		addEvent(0, setup);
+		addEvent(7.3, laugh);
+		addEvent(10, panUp);
+		addEvent(12, fadeOut);
+		addEvent(13.3, end);
+	}
+
+	override function update(elapsed:Float) {
+		super.update(elapsed);
+	}
+
+	function setup() {
+		addToCharacterLayer(tankmanCutscene);
+		tankmanCutscene.playAnim("full", true);
+		dad.visible = false;
+
+		boyfriend.playAnim("idle-loop", true);
+		gf.playAnim("idle-loop", true);
+
+		FlxG.sound.play(Paths.sound("week7/picoEndCutscene"));
+
+		fadeOutHud();
+
+		playstate.camMove(FlxMath.lerp(playstate.getOpponentFocusPosition().x, playstate.getBfFocusPostion().x, 0.5), FlxMath.lerp(playstate.getOpponentFocusPosition().y, playstate.getBfFocusPostion().y, 0.5), 1.5, FlxEase.quadInOut);
+		playstate.camChangeZoom(playstate.stage.startingZoom, 1.5, FlxEase.quadInOut);
+	}
+
+	function laugh() {
+		boyfriend.playAnim("laughEnd", true);
+	}
+
+	function panUp() {
+		playstate.camMove(playstate.camFollow.x, playstate.camFollow.y - 200, 3, FlxEase.cubeIn);
+	}
+
+	function fadeOut() {
+		playstate.camOverlay.fade(0xFF000000, 1);
+	}
+	
+	function end() {
+		next();
+	}
+
+}
