@@ -38,7 +38,7 @@ jobs:
 
       - name: Installing/Updating libraries
         run: |
-          haxelib setup ~/haxelib
+          haxelib setup C:\haxelib
           haxelib --global install hmm
           haxelib --global run hmm setup
           haxelib run hmm install
