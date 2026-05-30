@@ -1,0 +1,15 @@
+# Ignore compiled builds, release builds and promo shit
+export/
+releases/
+promo/
+art/scripts/convertedSongs
+
+# Ignore IDE and library stuff
+.haxelib/
+.vscode/
+art/scripts/__pycache__
+art/moddingDocs
+
+# Modding test stuff
+mods/test*
+.DS_Store
