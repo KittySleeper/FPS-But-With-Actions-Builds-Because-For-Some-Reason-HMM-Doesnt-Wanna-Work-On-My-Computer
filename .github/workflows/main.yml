@@ -28,6 +28,7 @@ jobs:
             cache-build-windows
       - name: Installing/Updating libraries
         run: |
+          reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v LongPathsEnabled /t REG_DWORD /d 1 /f
           haxelib setup ~/haxelib
           haxelib --global install hmm
           haxelib --global run hmm setup
