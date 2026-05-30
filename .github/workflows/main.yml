@@ -1,24 +1,33 @@
-
 name: Windows Build
+
 on:
   push:
   workflow_dispatch:
+
 jobs:
   build:
     name: Windows Build
     permissions: write-all
     runs-on: windows-latest
+
     steps:
+      - name: Enable Windows Long Paths
+        shell: cmd
+        run: |
+          reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v LongPathsEnabled /t REG_DWORD /d 1 /f
+          git config --system core.longpaths true
+
       - name: Pulling the new commit
         uses: actions/checkout@v2
+
       - name: Setting up Haxe
         uses: krdlab/setup-haxe@v2
         with:
           haxe-version: 4.3.7
+
       - name: Restore existing build cache for faster compilation
         uses: actions/cache@v3
         with:
-          # not caching the bin folder to prevent asset duplication and stuff like that
           key: cache-build-windows
           path: |
             .haxelib/
@@ -26,25 +35,25 @@ jobs:
             export/windows/obj/
           restore-keys: |
             cache-build-windows
+
       - name: Installing/Updating libraries
         run: |
-          reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v LongPathsEnabled /t REG_DWORD /d 1 /f
           haxelib setup ~/haxelib
           haxelib --global install hmm
           haxelib --global run hmm setup
           haxelib run hmm install
-          haxelib install flixel-ui 2.5.0
-          haxelib set openfl 9.2.2
-          haxelib set flixel-ui 2.5.0
           haxelib list
+
       - name: Building the game
         run: |
           haxelib run lime build windows
+
       - name: Uploading artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Music Player
+          name: FPS+
           path: export/windows/bin
+
       - name: Clearing already existing cache
         uses: actions/github-script@v6
         with:
@@ -53,6 +62,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
             })
+
             for (const cache of caches.data.actions_caches) {
               if (cache.key == "cache-build-windows") {
                 console.log('Clearing ' + cache.key + '...')
@@ -64,10 +74,10 @@ jobs:
                 console.log("Cache cleared.")
               }
             }
+
       - name: Uploading new cache
         uses: actions/cache@v3
         with:
-          # caching again since for some reason it doesnt work with the first post cache shit
           key: cache-build-windows
           path: |
             .haxelib/
