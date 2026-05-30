@@ -1,0 +1,34 @@
+package characters;
+
+class GfChristmas extends CharacterInfoBase
+{
+
+	public function new(){
+		super();
+
+		includeInCharacterList = false;
+		includeInGfList = true;
+
+		info.name = "gf-christmas";
+		info.spritePath = "week5/girlfriend_christmas";
+		info.frameLoadType = setAtlas();
+		
+		info.iconName = "gf";
+		info.focusOffset.set(2, 10);
+
+		addByLabel("danceLeft", offset(), "Idle Left", 24, loop(false));
+		addByLabel("danceRight", offset(), "Idle Right", 24, loop(false));
+		addByStartingAtLabel("idleLoop", offset(), "Idle Left", 30, 24, loop(true));
+
+		addByLabel("cheer", offset(), "Cheer", 24, loop(false));
+		addByLabel("sad", offset(), "Sad", 24, loop(false));
+
+		//Adds a combo alias every 50 notes.
+		for(i in 1...20){ addAnimAlias("combo" + (i * 50), "cheer"); }
+
+		info.idleSequence = ["danceLeft", "danceRight"];
+
+		addExtraData("reposition", [-2, 66]);
+	}
+
+}

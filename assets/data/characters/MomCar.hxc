@@ -1,0 +1,25 @@
+package characters;
+
+class MomCar extends CharacterInfoBase
+{
+
+	public function new(){
+		super();
+
+		info.name = "mom-car";
+		info.spritePath = "week4/mom";
+		info.frameLoadType = setAtlas();
+		
+		info.iconName = "mom";
+		info.focusOffset.set(216, -60);
+
+		addByLabel("idle", offset(), "Idle Hair Blowing", 24, loop(true, -4));
+		addByLabel("singUP", offset(), "Sing Up Hair Blowing", 24, loop(true, -4));
+		addByLabel("singDOWN", offset(), "Sing Down Hair Blowing", 24, loop(true, -4));
+		addByLabel("singLEFT", offset(), "Sing Left Hair Blowing", 24, loop(true, -4));
+		addByLabel("singRIGHT", offset(), "Sing Right Hair Blowing", 24, loop(true, -4));
+
+		addExtraData("reposition", [-78, 17]);
+	}
+
+}

@@ -1,0 +1,12 @@
+{
+  "name": "South Erect",
+  "artist": "Kawai Sprite (ft. Saruky)",
+  "album": "vol3",
+  "difficulties": [0, 8, 9],
+  "difficultySet": "erect",
+  "dadBeats": [0, 1, 2, 3],
+  "compatibleInsts": ["#south-erect"],
+  "compatableInsts": ["Included for backwards compatibility purposes and to prevent crashes."],
+  "mixName": "Original",
+  "pauseMusic": "pause/911825_woah_Loop"
+}
